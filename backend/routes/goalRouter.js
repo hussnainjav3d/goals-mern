@@ -5,12 +5,13 @@ const {
   deleteGoals,
   updateGoals,
   setGoals,
+  getSpecificGoal,
 } = require("../controllers/goalController");
 
 //  Routes Chaining
 
 router.route("/").get(getGoals).post(setGoals);
-router.route("/:id").put(updateGoals).delete(deleteGoals);
+router.route("/:id").put(updateGoals).delete(deleteGoals).get(getSpecificGoal);
 
 //  this is all routes
 {

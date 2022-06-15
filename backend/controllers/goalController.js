@@ -10,6 +10,20 @@ const getGoals = asyncHandler(async (req, res) => {
   res.status(200).json({ data: { goals: goals }, hasError: false });
 });
 
+// @desc Get Specific Goal
+// @route /api/goals
+// @access private
+const getSpecificGoal = asyncHandler(async (req, res) => {
+  const goal = await Goal.findById(req.params.id);
+
+  if (!goal) {
+    res.status(400);
+    throw new Error("Goal Not Found");
+  }
+
+  res.status(200).json({ data: { goal }, hasError: false });
+});
+
 // @desc Set Goals
 // @route /api/goals
 // @access private
@@ -64,4 +78,5 @@ module.exports = {
   deleteGoals,
   updateGoals,
   setGoals,
+  getSpecificGoal,
 };

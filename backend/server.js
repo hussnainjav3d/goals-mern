@@ -13,7 +13,7 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extends: false }));
 
-app.use("/api/goals", require("./routes/goalRouter.js"));
+app.use("/api/goals", require("./routes/goalRouter"));
 
 // Override default error handler
 app.use(errorHandler);
